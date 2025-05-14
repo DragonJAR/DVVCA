@@ -1,0 +1,164 @@
+[
+  {
+    "name": "Apple MacBook Air Laptop with M2 chip 2022",
+    "description": "Introducing the 2022 Apple MacBook Air laptop with M2 chip, a powerhouse of performance and style. Featuring a stunning 13.6-inch Liquid Retina display, every detail comes to life with vibrant colors and crisp clarity. With 8GB of RAM and 256GB of SSD storage, multitasking is a breeze, ensuring smooth operation for all your tasks. Work comfortably in any environment with the backlit keyboard, allowing you to type effortlessly, even in low light. Stay connected with friends and colleagues using the 1080p FaceTime HD camera, delivering crystal-clear video calls every time. Plus, with seamless integration with your iPhone and iPad, you can easily transfer files, answer calls, and even unlock your MacBook Air with your Apple devices. In short, this laptop combines power, elegance, and convenience, making it the perfect companion for work, study, and everything in between.",
+    "image_url": "product_images/macbook_air_m2_2022.png",
+    "price_str": "$1099.00",
+    "price": 1099.00,
+    "category_id": 1,
+    "category_name": "Laptops"
+  },
+  {
+    "name": "Acer Aspire 3 A315-24P-R7VH Slim Laptop",
+    "description": "Introducing the Acer Aspire 3 A315-24P-R7VH Slim Laptop, this versatile computing companion is designed for productivity and entertainment on the go. With its sleek and lightweight design, it's perfect for users who are constantly on the move. The 15.6-inch Full HD IPS display delivers stunning visuals, while the AMD Ryzen 3 7320U Quad-Core processor and AMD Radeon graphics ensure smooth performance for daily tasks and light gaming. With 8GB of LPDDR5 RAM and a 128GB NVMe SSD, multitasking is seamless, and you have ample storage space for your files. Stay connected with Wi-Fi 6 for fast and reliable wireless connectivity, and enjoy the secure and user-friendly experience of Windows 11 Home in S Mode.",
+    "image_url": "product_images/acer_aspire_3_A315_24P_R7VH.png",
+    "price_str": "$379.99",
+    "price": 379.99,
+    "category_id": 1,
+    "category_name": "Laptops"
+  },
+  {
+    "name": "HP TPN-Q222 Laptop",
+    "description": "Introducing the HP TPN-Q222 Laptop, a versatile computing powerhouse designed to meet all your needs with ease. Its large 15.6-inch HD touchscreen display offers an immersive visual experience for work, study, or entertainment. Equipped with the Intel Core i3-1115G4 processor, this laptop ensures smooth and efficient performance for all your daily tasks, whether you're multitasking between applications, browsing the web, or streaming content. With an impressive 32GB of RAM and a spacious 1TB PCIe SSD, you'll have ample memory and storage space to store all your files, applications, and multimedia content. Effortlessly connect to external devices and peripherals with essential ports like the webcam, Type-C, HDMI, and SD card reader. Stay connected with built-in Wi-Fi and enjoy the user-friendly interface and robust security features of Windows 11 Home.",
+    "image_url": "product_images/hp_TPN_Q222.png",
+    "price_str": "$699.99",
+    "price": 699.99,
+    "category_id": 1,
+    "category_name": "Laptops"
+  },
+  {
+    "name": "Newest HP 14\" Ultralight Laptop",
+    "description": "Introducing the newest HP 14\" Ultralight Laptop, designed for students and business users seeking portability and performance. Equipped with the Intel Quad-Core N4120 processor and 8GB of RAM, this laptop ensures smooth multitasking and responsiveness for all your tasks. With 192GB of storage (64GB eMMC + 128GB Micro SD), you have ample space for your files and multimedia content. Essential features like a webcam, HDMI port, and USB-A & C connectivity make it easy to connect to external devices. Stay connected to the internet with built-in Wi-Fi and enjoy the user-friendly interface of Windows 11S.",
+    "image_url": "product_images/hp_ultraligera_14.png",
+    "price_str": "$299.99",
+    "price": 299.99,
+    "category_id": 1,
+    "category_name": "Laptops"
+  },
+  {
+    "name": "Newest HP Chromebook 2023 Laptop",
+    "description": "Introducing the newest HP Chromebook 2023 Laptop, a sleek and efficient device designed for seamless browsing and productivity. Its crisp 14-inch display provides clear visuals, perfect for work or streaming content. Equipped with the Intel Celeron N4120 processor and 4GB of RAM, this Chromebook ensures smooth performance for daily tasks. With 64GB of eMMC storage, you have ample space for apps, documents, and media files. The integrated Intel UHD Graphics 600 delivers vibrant visuals, ideal for watching videos or browsing the web. Stay connected with built-in WiFi and Bluetooth capabilities, allowing for easy internet access and device pairing. Plus, Chrome OS provides access to a wide range of apps and services, ensuring productivity on the go.",
+    "image_url": "product_images/hp_chromebook_2023.png",
+    "price_str": "$229.99",
+    "price": 229.99,
+    "category_id": 1,
+    "category_name": "Laptops"
+  },
+  {
+    "name": "Acer Aspire 1 A115-32-C96U Laptop",
+    "description": "Introducing the Acer Aspire 1 A115-32-C96U Laptop, a sleek and efficient notebook designed for everyday productivity and entertainment. Its 15.6-inch Full HD display delivers crisp visuals, perfect for work or streaming content. Equipped with the Intel Celeron N4500 processor and 4GB of DDR4 RAM, this laptop ensures smooth performance for everyday tasks. With 128GB of eMMC storage, you have ample space for your files and multimedia content. Stay connected with built-in WiFi and Bluetooth capabilities, allowing for easy internet access and device pairing. Plus, Windows 11 Home in S mode provides a secure and streamlined experience, with access to a wide range of apps and services.",
+    "image_url": "product_images/acer_aspire_1_A115_32_C96U.png",
+    "price_str": "$259.99",
+    "price": 259.99,
+    "category_id": 1,
+    "category_name": "Laptops"
+  },
+  {
+    "name": "Apple MacBook Air Laptop with 13-inch Retina Display",
+    "description": "Introducing the Apple MacBook Air Laptop with a 13-inch Retina Display, a perfect blend of portability and performance. Its stunning Retina display delivers vibrant visuals and sharp text, making it ideal for work, study, or entertainment. Equipped with a powerful Intel Core i5 processor and 8GB of RAM, this MacBook Air ensures smooth multitasking and efficient performance for daily tasks. With 256GB of SSD storage, you have ample space for your files, applications, and multimedia content. The sleek and lightweight design makes it easy to carry around, while the long-lasting battery keeps you productive throughout the day. Stay connected with built-in WiFi and Bluetooth capabilities, and enjoy the secure and user-friendly experience of macOS.",
+    "image_url": "product_images/apple_macbook_air_retina_13.png",
+    "price_str": "$749.00",
+    "price": 749.00,
+    "category_id": 1,
+    "category_name": "Laptops"
+  },
+  {
+    "name": "Dell Chromebook 11 (HD IPS Touchscreen)",
+    "description": "Introducing the Dell Chromebook 11, a versatile and durable laptop designed for students and professionals alike. Its 11.6-inch HD IPS touchscreen display offers crisp visuals and wide viewing angles, making it ideal for work, study, or browsing the web. Equipped with an Intel Celeron N3060 processor and 4GB of RAM, this Chromebook ensures smooth performance for daily tasks and multitasking. With 16GB of eMMC storage, you have enough space for your essential files and applications. The rugged design can withstand the rigors of daily use, making it a reliable companion for on-the-go productivity. Stay connected with built-in WiFi and Bluetooth capabilities, and enjoy the simplicity and security of Chrome OS.",
+    "image_url": "product_images/dell_chromebook_11_ips_hd.png",
+    "price_str": "$179.99",
+    "price": 179.99,
+    "category_id": 1,
+    "category_name": "Laptops"
+  },
+  {
+    "name": "Acer Nitro 17 Gaming Laptop",
+    "description": "Introducing the Acer Nitro 17 Gaming Laptop, a powerful machine designed for immersive gaming experiences. Its large 17.3-inch QHD display with a 165Hz refresh rate delivers smooth and detailed visuals, bringing your games to life. Equipped with the Intel Core i7-13650HX processor and NVIDIA GeForce RTX 4050 graphics, this gaming laptop ensures top-tier performance for the latest AAA titles. With 16GB of DDR5 RAM and a 1TB PCIe Gen4 SSD, multitasking is seamless, and you have ample storage space for your game library. The customizable RGB backlit keyboard adds a touch of style to your gaming setup, while built-in WiFi 6 and Bluetooth capabilities ensure seamless connectivity. Plus, with Windows 11 Home, you enjoy a secure and user-friendly gaming experience.",
+    "image_url": "product_images/acer_nitro_17_gaming.png",
+    "price_str": "$1199.00",
+    "price": 1199.00,
+    "category_id": 1,
+    "category_name": "Laptops"
+  },
+  {
+    "name": "Samsung Galaxy S25 Ultra",
+    "description": "Our pick for the best overall phone is the Samsung Galaxy S25 Ultra, thanks to its immersive and vibrant display, reliable battery life, and a host of special features. It's the phone for power users who want the best of the best, and it's a device that will last you for years.",
+    "image_url": "product_images/samsung_galaxy_s25_ultra.png",
+    "price_str": "$1299.99",
+    "price": 1299.99,
+    "category_id": 2,
+    "category_name": "Smartphones"
+  },
+  {
+    "name": "iPhone 16 Pro Max",
+    "description": "The iPhone 16 Pro Max solidifies its position as Apple's most outstanding smartphone offering over the past year, delivering a comprehensive package for the premium user. Its standout feature is arguably the expansive and bright 6.9-inch AMOLED display, ideal for immersive multimedia consumption and mobile productivity alike. The 2024 model introduces a notable design shift with slimmer bezels enhancing the larger screen feel, coupled with the addition of the new Camera Control button. This physical switch allows for quick camera access and photo capture without screen interaction. The latest A18 Pro chip powers the phone's performance, yielding significantly faster and more efficient on-device AI processing. Camera capabilities are also further enhanced with 4K 120fps video recording and Audio Mix technology to isolate and clarify voices in recordings. Improved battery life and new support for 25W MagSafe wireless charging round out the significant hardware upgrades.",
+    "image_url": "product_images/iphone_16_pro_max.png",
+    "price_str": "$1399.99",
+    "price": 1399.99,
+    "category_id": 2,
+    "category_name": "Smartphones"
+  },
+  {
+    "name": "CMF Phone 2 Pro by Nothing",
+    "description": "The CMF Phone 2 Pro by Nothing stands out as a remarkable budget-friendly option, offering a balance between features and affordability. While specific details for the 2025 model may vary, Nothing's CMF line focuses on delivering unique designs and a clean user experience, often featuring transparent elements and a minimalist user interface. The Phone 2 Pro is expected to continue this tradition, providing solid performance for daily use, a competent camera, and adequate battery life for its price range. It's an excellent choice for users looking for a distinctive smartphone without breaking the bank.",
+    "image_url": "product_images/cmf_phone_2_pro_nothing.png",
+    "price_str": "$349.00",
+    "price": 349.00,
+    "category_id": 2,
+    "category_name": "Smartphones"
+  },
+  {
+    "name": "Google Pixel 9 Pro XL",
+    "description": "The Google Pixel 9 Pro XL is positioned as the phone with the best camera, continuing Google's reputation for excellence in computational photography. This model is expected to offer an advanced camera system with improved sensors and new AI-powered software capabilities to capture stunning images and videos in various conditions. In addition to its photographic prowess, the Pixel 9 Pro XL will likely feature a large, high-resolution display, Google's latest Tensor processor for fast and efficient performance, and a clean, up-to-date Android experience with timely software updates. It is aimed at users who prioritize camera quality and a pure Android software experience.",
+    "image_url": "product_images/google_pixel_9_pro_xl.png",
+    "price_str": "$1099.00",
+    "price": 1099.00,
+    "category_id": 2,
+    "category_name": "Smartphones"
+  },
+  {
+    "name": "OnePlus 13",
+    "description": "The OnePlus 13 is renowned for being the fastest charging phone, a hallmark feature of the OnePlus brand. This model is expected to offer ultra-fast charging speeds, both wired and wireless, minimizing downtime. In addition to its rapid charging capability, the OnePlus 13 will likely feature a smooth, high-refresh-rate display, a powerful Snapdragon processor for top-tier performance, and a versatile camera system developed in collaboration with Hasselblad. It is aimed at users who value performance, charging speed, and a clean, customizable OxygenOS software experience.",
+    "image_url": "product_images/oneplus_13.png",
+    "price_str": "$899.00",
+    "price": 899.00,
+    "category_id": 2,
+    "category_name": "Smartphones"
+  },
+  {
+    "name": "Samsung Galaxy Z Fold 6",
+    "description": "The Samsung Galaxy Z Fold 6 represents the cutting edge of foldable phones, offering a tablet-like experience that folds to fit in your pocket. This model is expected to further refine the foldable design with a more durable hinge and a less noticeable internal display crease. It will feature high-quality AMOLED displays on both the exterior and interior, a powerful Snapdragon processor for smooth multitasking, and a versatile camera array. The Galaxy Z Fold 6 is aimed at pioneering users seeking the latest in mobile technology and productivity, combining the portability of a smartphone with the functionality of a tablet.",
+    "image_url": "product_images/samsung_galaxy_z_fold_6.png",
+    "price_str": "$1799.99",
+    "price": 1799.99,
+    "category_id": 2,
+    "category_name": "Smartphones"
+  },
+  {
+    "name": "Samsung Galaxy Z Flip 6",
+    "description": "The Samsung Galaxy Z Flip 6 continues to refine the popular clamshell foldable category, blending nostalgic appeal with robust modern technology in a pocketable device brimming with character. Introduced last July, its defining feature remains the satisfying shape-shifting design. Unfolded, it reveals a large, crisp, and bright 6.7-inch AMOLED main display, comparable in quality to Samsung's standard S-series flagships. Performance sees a significant boost with the inclusion of the Snapdragon 8 Gen 3 chipset and, crucially for this form factor, the first-ever vapor chamber featured in a Z Flip, which I found greatly improves power efficiency and thermal management during creative use.",
+    "image_url": "product_images/samsung_galaxy_z_flip_6.png",
+    "price_str": "$999.99",
+    "price": 999.99,
+    "category_id": 2,
+    "category_name": "Smartphones"
+  },
+  {
+    "name": "Apple iPhone 16 Pro",
+    "description": "The Apple iPhone 16 Pro offers many of the premium features of its larger sibling, the Pro Max, but in a more compact and manageable form factor. It shares the same powerful A18 Pro chip, improvements to the camera system with the new Camera Control Button, and Apple Intelligence AI capabilities. The display, while smaller than the Pro Max, is still of exceptional quality, offering vibrant colors and excellent brightness. It's the ideal choice for those seeking a high-end iPhone with all the latest innovations but prefer a device size that is more comfortable for one-handed use and pocketability.",
+    "image_url": "product_images/apple_iphone_16_pro.png",
+    "price_str": "$1099.99",
+    "price": 1099.99,
+    "category_id": 2,
+    "category_name": "Smartphones"
+  },
+  {
+    "name": "Google Pixel 9a",
+    "description": "The Google Pixel 9a is shaping up to be an excellent budget option, offering many of the cherished features of the Pixel line at a more accessible price point. While it may not have the most premium design or all the advanced features of the Pro models, the Pixel 9a will focus on delivering a solid camera experience, smooth performance for daily use thanks to Google's Tensor processor, and the promise of quick software updates and a clean Android experience. It's ideal for users looking for Google's intelligence and photographic quality without breaking the bank.",
+    "image_url": "product_images/google_pixel_9a.png",
+    "price_str": "$499.00",
+    "price": 499.00,
+    "category_id": 2,
+    "category_name": "Smartphones"
+  }
+]
