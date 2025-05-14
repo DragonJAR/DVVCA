@@ -1,7 +1,32 @@
+# src/main.py
 import os
 import sys
 import datetime # Add this import
 from datetime import timedelta # Import timedelta
+
+# --- ASCII BANNER ---
+# ANSI escape codes for colors (optional)
+RED = '\033[91m'
+CYAN = '\033[96m'
+YELLOW = '\033[93m'
+RESET = '\033[0m' # Resets the color
+
+banner = f"""
+{CYAN}
+  _______      ____      _______          
+ |  __ \ \    / /\ \    / / ____|   /\    
+ | |  | \ \  / /  \ \  / / |       /  \   
+ | |  | |\ \/ /    \ \/ /| |      / /\ \  
+ | |__| | \  /      \  / | |____ / ____ \ 
+ |_____/   \/        \/   \_____/_/    \_\\
+{RESET}
+{YELLOW}   Damn Vulnerable Vibe Code Application{RESET}
+{RED}==========================================={RESET}
+"""
+print(banner)
+# --- END ASCII BANNER ---
+
+
 # DON'T CHANGE THIS !!!
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
@@ -9,7 +34,7 @@ from flask import Flask, send_from_directory, render_template, abort, session # 
 from flask_login import LoginManager # Import LoginManager
 
 # Import all models to ensure tables are created
-from src.models import db
+from src.models import db # Esta línea asume que src/models/__init__.py define 'db'
 from src.models.user import User
 from src.models.category import Category
 from src.models.product import Product
@@ -104,7 +129,7 @@ def serve_profile_pic(filename):
 def serve_product_image(filename):
     # Product images are saved in src/static/product_images
     # So, the send_from_directory should point there relative to app.static_folder or use absolute path from config
-    product_images_folder = app.config['PRODUCT_IMAGE_UPLOAD_FOLDER'] 
+    product_images_folder = app.config['PRODUCT_IMAGE_UPLOAD_FOLDER']
     # The app.static_folder is 'src/static'. So product_images_folder is 'src/static/product_images'
     # send_from_directory for static files is usually relative to app.static_folder if not absolute.
     # However, since PRODUCT_IMAGE_UPLOAD_FOLDER is already an absolute path to src/static/product_images,
@@ -128,4 +153,3 @@ def serve_product_image(filename):
 # --- Main Execution ---
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
-
