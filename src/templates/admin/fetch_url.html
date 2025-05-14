@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Fetch URL Content{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h4 class="mb-0">URL Content Fetcher Utility</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">This utility allows administrators to fetch and view the content of a specified URL. Useful for diagnosing network connectivity to external resources or retrieving raw content from web pages for analysis.</p>
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label for="url_to_fetch" class="form-label"><strong>Enter URL to Fetch:</strong></label>
+                            <input type="text" class="form-control" id="url_to_fetch" name="url_to_fetch" value="{{ requested_url if requested_url }}" placeholder="e.g., http://example.com/api/data.json">
+                        </div>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-download me-2"></i>Fetch Content</button>
+                    </form>
+
+                    {% if fetched_content %}
+                        <hr class="my-4">
+                        <h5>Content from <span class="text-primary">{{ requested_url }}</span>:</h5>
+                        <div class="card bg-light mt-3">
+                            <div class="card-body">
+                                <pre class="mb-0" style="white-space: pre-wrap; word-wrap: break-word;">{{ fetched_content }}</pre>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="card-footer text-muted">
+                    Please use this tool responsibly. Fetching content from untrusted sources may pose a security risk.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

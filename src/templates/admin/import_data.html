@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Data Import Utility - Admin Panel{% endblock %}
+
+{% block content %}
+<h2>Data Import Utility</h2>
+<p>This utility allows importing system data or configurations from a previously exported file (serialized using Pickle and encoded in Base64). Please ensure the data format is correct before importing.</p>
+
+{# CSRF Vulnerability: Form without token #}
+<form method="POST" action="{{ url_for("admin.import_data") }}">
+    <div class="mb-3">
+        <label for="pickled_data" class="form-label">Serialized Data (Pickle + Base64):</label>
+        <textarea class="form-control" id="pickled_data" name="pickled_data" rows="5" placeholder="Paste the Base64 encoded data here..."></textarea>
+    </div>
+    <button type="submit" class="btn btn-warning">Import Data</button> {# Kept warning color for potential caution #}
+</form>
+
+{% if result is not none %}
+<hr>
+<h3>Import Result:</h3>
+{# Intentionally vulnerable: Result might contain sensitive info or reflect successful RCE #}
+<pre class="border p-3" style="max-height: 400px; overflow-y: auto; background-color: #f8f9fa;">{{ result }}</pre>
+{% endif %}
+
+{% endblock %}
+

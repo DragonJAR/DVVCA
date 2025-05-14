@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Shopping Cart - DVVCA{% endblock %}
+
+{% block content %}
+<h2>Your Shopping Cart</h2>
+
+{% if cart_items %}
+<div class="table-responsive">
+    <table class="table align-middle">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr>
+                <td>{{ item.product.name | safe }}</td>
+                <td>${{ "%.2f"|format(item.product.price) }}</td>
+                <td>
+                    {# CSRF Vulnerability: Update cart form without token #}
+                    <form action="{{ url_for("shop.update_cart_item", item_id=item.id) }}" method="POST" class="d-inline-flex align-items-center">
+                        <input type="number" class="form-control form-control-sm me-2" value="{{ item.quantity }}" min="1" name="quantity" style="width: 70px;" aria-label="Quantity">
+                        <button type="submit" class="btn btn-sm btn-secondary">Update</button> {# Use secondary for update #}
+                    </form>
+                </td>
+                <td>${{ "%.2f"|format(item.quantity * item.product.price) }}</td>
+                <td>
+                    {# CSRF Vulnerability: Remove from cart form without token #}
+                    <form action="{{ url_for("shop.remove_cart_item", item_id=item.id) }}" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-sm btn-danger">Remove</button> {# Use danger for remove #}
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-end fs-5"><strong>Total:</strong></td>
+                <td class="fs-5"><strong>${{ "%.2f"|format(total_price) }}</strong></td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<div class="text-end mt-3">
+    <a href="{{ url_for("shop.checkout") }}" class="btn btn-primary btn-lg">Proceed to Checkout</a> {# Use primary for checkout #}
+</div>
+
+{% else %}
+<div class="alert alert-info" role="alert">
+    Your cart is empty.
+</div>
+<a href="{{ url_for("shop.index") }}" class="btn btn-outline-primary">Continue Shopping</a> {# Use outline-primary #}
+{% endif %}
+
+{% endblock %}
+

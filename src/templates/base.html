@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}DVVCA{% endblock %}</title>
+    <!-- Bootstrap CSS (Quartz theme - will override parts) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/quartz/bootstrap.min.css">
+    <!-- Custom Styles -->
+    <style>
+        body {
+            padding-top: 5rem; /* Adjust based on fixed navbar height */
+            /* Black to Red Gradient Background */
+            background: linear-gradient(to bottom, #000000, #c11b05);
+            background-attachment: fixed; /* Keep gradient fixed during scroll */
+            color: #f8f9fa; /* Light text color for better contrast on dark background */
+            min-height: 100vh; /* Ensure gradient covers full height */
+        }
+        .flash-messages .alert { margin-bottom: 1rem; border-radius: 0.25rem; }
+
+        /* Navbar adjustments */
+        .navbar {
+            background-color: #1a1a1a !important; /* Slightly lighter black for navbar */
+            border-bottom: 1px solid #c11b05;
+        }
+        .navbar-brand, .nav-link, .dropdown-item {
+             color: #f8f9fa !important; /* Light text for navbar items */
+        }
+        .nav-link.active {
+            color: #ff4d4d !important; /* Highlight active link with brighter red */
+        }
+        .nav-link:hover, .navbar-brand:hover, .dropdown-item:hover {
+            color: #ff8080 !important; /* Lighter red on hover */
+        }
+        .dropdown-menu {
+            background-color: #212529; /* Dark background for dropdown */
+            border-color: #c11b05;
+        }
+        .dropdown-divider {
+             border-top-color: #495057;
+        }
+
+        /* General container/card/form adjustments */
+        .container {
+            padding-top: 2rem; /* Add padding to the top of the main content area */
+            padding-bottom: 2rem; /* Add padding to the bottom */
+        }
+        .card {
+             background-color: rgba(33, 37, 41, 0.8); /* Slightly transparent dark cards */
+             border: 1px solid #c11b05;
+             color: #f8f9fa;
+             margin-bottom: 1.5rem; /* Add space below cards */
+        }
+        .card-header, .card-footer {
+            background-color: rgba(52, 58, 64, 0.8);
+            border-bottom: 1px solid #c11b05;
+            border-top: 1px solid #c11b05;
+        }
+        .list-group-item {
+            background-color: rgba(33, 37, 41, 0.8);
+            border-color: #495057;
+            color: #f8f9fa;
+        }
+        /* Improve form spacing */
+        .form-label {
+            margin-bottom: 0.5rem;
+        }
+        .form-control, .form-select {
+            margin-bottom: 1rem; /* Add space below form inputs */
+            background-color: #495057;
+            color: #f8f9fa;
+            border-color: #6c757d;
+        }
+        .form-control:focus {
+            background-color: #495057;
+            color: #f8f9fa;
+            border-color: #c11b05;
+            box-shadow: 0 0 0 0.25rem rgba(193, 27, 5, 0.25);
+        }
+        .form-control::placeholder {
+            color: #adb5bd;
+        }
+
+        /* Button adjustments */
+        .btn {
+            margin-top: 0.5rem; /* Add some space above buttons */
+            margin-right: 0.5rem; /* Add space between buttons */
+            transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        .btn-primary {
+            background-color: #c11b05; /* Use the red color for primary buttons */
+            border-color: #a01604;
+            color: #ffffff;
+        }
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: #a01604;
+            border-color: #7e1103;
+            color: #ffffff;
+            box-shadow: 0 0 0 0.25rem rgba(193, 27, 5, 0.5);
+        }
+        /* Make secondary buttons dark */
+        .btn-secondary {
+             background-color: #212529;
+             border-color: #343a40;
+             color: #f8f9fa;
+        }
+        .btn-secondary:hover, .btn-secondary:focus {
+             background-color: #343a40;
+             border-color: #495057;
+             color: #f8f9fa;
+             box-shadow: 0 0 0 0.25rem rgba(52, 58, 64, 0.5);
+        }
+        /* Adjust other button types if needed (e.g., btn-danger, btn-warning) */
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+         .btn-danger:hover {
+            background-color: #bb2d3b;
+            border-color: #b02a37;
+        }
+        /* Outline buttons */
+        .btn-outline-primary {
+            color: #ff4d4d; /* Brighter red text */
+            border-color: #c11b05;
+        }
+        .btn-outline-primary:hover, .btn-outline-primary:focus {
+            color: #ffffff;
+            background-color: #c11b05;
+            border-color: #c11b05;
+            box-shadow: 0 0 0 0.25rem rgba(193, 27, 5, 0.5);
+        }
+        .btn-outline-secondary {
+            color: #adb5bd; /* Light grey text */
+            border-color: #495057;
+        }
+        .btn-outline-secondary:hover, .btn-outline-secondary:focus {
+            color: #ffffff;
+            background-color: #343a40;
+            border-color: #495057;
+            box-shadow: 0 0 0 0.25rem rgba(52, 58, 64, 0.5);
+        }
+
+        /* Adjust links to be more visible */
+        a {
+            color: #ff4d4d; /* Brighter red for links */
+            text-decoration: none;
+        }
+        a:hover {
+            color: #ff8080; /* Lighter red on hover */
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for("shop.index") }}">DVVCA</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ url_for("shop.index") }}">Home</a>
+                    </li>
+                    <!-- Category links would go here -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for("shop.view_cart") }}">Cart</a>
+                    </li>
+                    {% if current_user.is_authenticated %}
+                        {% if current_user.role == 'admin' %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for("admin.dashboard") }}">Admin</a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Hello, {{ current_user.username }}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{{ url_for('profile.view_profile') }}">My Profile</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('profile.view_history') }}">History</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('profile.view_favorites') }}">Favorites</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{{ url_for('auth.logout') }}">Logout</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for("auth.login") }}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for("auth.register") }}">Register</a>
+                        </li>
+                    {% endif %}
+                </ul>
+                <form class="d-flex align-items-center" action="{{ url_for("shop.search_products") }}" method="GET">
+                    <input class="form-control me-2" type="search" placeholder="Search products..." aria-label="Search" name="q">
+                    <button class="btn btn-secondary" type="submit">Search</button> <!-- Using secondary for search -->
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages mt-3">
+                {% for category, message in messages %}
+                    {# Map flash categories to Bootstrap alert classes #}
+                    {% set alert_class = 'alert-info' %}
+                    {% if category == 'success' %}
+                        {% set alert_class = 'alert-success' %}
+                    {% elif category == 'danger' or category == 'error' %}
+                        {% set alert_class = 'alert-danger' %}
+                    {% elif category == 'warning' %}
+                        {% set alert_class = 'alert-warning' %}
+                    {% endif %}
+                    <div class="alert {{ alert_class }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}
+        <!-- Page-specific content will go here -->
+        {% endblock %}
+    </main><!-- /.container -->
+
+    <!-- Footer placeholder -->
+    <footer class="container mt-5 text-center text-muted">
+        <p>&copy; DVVCA {{ current_year }} - Damn Vulnerable Vibe Code App</p>
+    </footer>
+
+    <!-- JS scripts (Bootstrap, etc.) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

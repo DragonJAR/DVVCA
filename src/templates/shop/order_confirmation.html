@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Order Confirmation</h2>
+  <p>Thank you for your purchase, {{ order.user.username }}! Your order number is <strong>#{{ order.id }}</strong>.</p>
+  <p>Order Date: {{ order.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Unit Price</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% set total = 0 %}
+        {% for item in order.order_items %}
+          {% set item_subtotal = item.subtotal %}
+          {% set total = total + item_subtotal %}
+          <tr>
+            <td>{{ item.product.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>${{ "%.2f"|format(item.product.price) }}</td>
+            <td>${{ "%.2f"|format(item_subtotal) }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <a href="{{ url_for('shop.index') }}" class="btn btn-primary mt-3">Continue Shopping</a>
+</div>
+{% endblock %}

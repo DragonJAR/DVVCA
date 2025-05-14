@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}System Information - Admin Panel{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>System Information</h2>
+    <hr>
+    <p>Overview of the current system status and configuration.</p>
+    
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Server OS:
+            <span class="badge bg-secondary rounded-pill">Linux</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Python Version:
+            <span class="badge bg-secondary rounded-pill">3.11</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Database Status:
+            <span class="badge bg-success rounded-pill">Connected</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Last Backup:
+            <span class="badge bg-info rounded-pill">2025-04-30 01:00 UTC</span>
+        </li>
+    </ul>
+    <a href="{{ url_for("admin.dashboard") }}" class="btn btn-secondary mt-3">Back to Admin Dashboard</a>
+</div>
+{% endblock %}
+

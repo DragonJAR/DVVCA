@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}Checkout - DVVCA{% endblock %}
+
+{% block content %}
+<h2>Checkout</h2>
+
+<div class="row g-5">
+    <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Shipping Address</h4>
+        {# CSRF Vulnerability: Checkout form without token #}
+        <form method="POST" action="{{ url_for("shop.checkout") }}" class="needs-validation" novalidate>
+            <div class="row g-3">
+                <div class="col-12">
+                    <label for="full_name" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="full_name" name="full_name" required>
+                    <div class="invalid-feedback">
+                        Valid full name is required.
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St" required>
+                    <div class="invalid-feedback">
+                        Please enter your shipping address.
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="form-control" id="city" name="city" required>
+                    <div class="invalid-feedback">
+                        City required.
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="state" class="form-label">State/Province</label>
+                    <input type="text" class="form-control" id="state" name="state" required>
+                    <div class="invalid-feedback">
+                        State required.
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="zip_code" class="form-label">Zip Code</label>
+                    <input type="text" class="form-control" id="zip_code" name="zip_code" required>
+                    <div class="invalid-feedback">
+                        Zip code required.
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4">
+
+            <h4 class="mb-3">Payment Information</h4>
+            <p class="text-muted">Do not enter real card numbers. This is only a simulation.</p>
+            <!-- Payment Fields (Intentionally Insecure for DVVCA) -->
+            <div class="row gy-3">
+                <div class="col-md-6">
+                    <label for="card_name" class="form-label">Name on card</label>
+                    <input type="text" class="form-control" id="card_name" name="card_name" placeholder="">
+                    <small class="text-muted">Full name as displayed on card</small>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="card_number" class="form-label">Card Number</label>
+                    <input type="text" class="form-control" id="card_number" name="card_number" placeholder="XXXX-XXXX-XXXX-XXXX">
+                </div>
+
+                <div class="col-md-3">
+                    <label for="expiry_date" class="form-label">Expiration (MM/YY)</label>
+                    <input type="text" class="form-control" id="expiry_date" name="expiry_date" placeholder="MM/YY">
+                </div>
+
+                <div class="col-md-3">
+                    <label for="cvv" class="form-label">CVV</label>
+                    <input type="text" class="form-control" id="cvv" name="cvv" placeholder="XXX">
+                </div>
+            </div>
+
+            <hr class="my-4">
+
+            <button class="w-100 btn btn-primary btn-lg" type="submit">Place Order</button> {# Use primary for red #}
+        </form>
+    </div>
+
+    <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-primary">Order Summary</span> {# Use text-primary for red #}
+            <span class="badge bg-primary rounded-pill">{{ cart_items|length }}</span> {# Use bg-primary for red #}
+        </h4>
+        <ul class="list-group mb-3">
+            {% for item in cart_items %}
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+                <div>
+                    <h6 class="my-0">{{ item.product.name | safe }}</h6>
+                    <small class="text-muted">Quantity: {{ item.quantity }}</small>
+                </div>
+                <span class="text-muted">${{ "%.2f"|format(item.subtotal) }}</span>
+            </li>
+            {% endfor %}
+            <li class="list-group-item d-flex justify-content-between">
+                <span>Total (USD)</span>
+                <strong>${{ "%.2f"|format(total_price) }}</strong>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+

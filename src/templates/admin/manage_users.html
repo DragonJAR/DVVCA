@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Users - DVVCA{% endblock %}
+
+{% block content %}
+<h2>Manage Users</h2>
+
+{% if users %}
+<div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Joined</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username | safe }}</td>
+                <td>{{ user.email | safe }}</td>
+                <td>
+                    <span class="badge {{ 'bg-danger' if user.is_admin else 'bg-secondary' }}">
+                        {{ 'Admin' if user.is_admin else 'User' }}
+                    </span>
+                </td>
+                <td>{{ user.created_at.strftime("%Y-%m-%d") }}</td>
+                <td>
+                    {# CSRF Vulnerability: Role change form without token #}
+                    <form action="{{ url_for("admin.change_user_role", user_id=user.id) }}" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-sm {{ 'btn-warning' if user.is_admin else 'btn-success' }}">
+                            {{ 'Demote to User' if user.is_admin else 'Promote to Admin' }}
+                        </button>
+                    </form>
+                    {# CSRF Vulnerability: Delete form without token #}
+                    <form action="{{ url_for("admin.delete_user", user_id=user.id) }}" method="POST" class="d-inline" onsubmit="return confirm("Are you sure you want to delete this user?");">
+                        <button type="submit" class="btn btn-sm btn-danger" {{ 'disabled' if user.id == current_user.id }}>Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="alert alert-info" role="alert">
+    No users found.
+</div>
+{% endif %}
+
+{% endblock %}
+

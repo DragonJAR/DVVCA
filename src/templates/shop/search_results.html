@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Search Results - DVVCA{% endblock %}
+
+{% block content %}
+{# Intentionally vulnerable: Reflected XSS - Displaying raw query unsafely #}
+<h2>Search Results for: {{ query | safe }}</h2>
+
+{% if results %}
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for product in results %}
+    <div class="col">
+        <div class="card h-100">
+            {% if product.image_url %}
+            {# Use serve_product_image endpoint #}
+            <img src="{{ url_for("serve_product_image", filename=product.image_url) }}" class="card-img-top" alt="{{ product.name | safe }}" style="height: 200px; object-fit: contain; padding: 10px;">
+            {% else %}
+            <div class="card-img-top d-flex align-items-center justify-content-center" style="height: 200px; background-color: #495057; color: #adb5bd;">No Image</div>
+            {% endif %}
+            <div class="card-body d-flex flex-column">
+                {# Intentionally vulnerable: Stored XSS - Product name might contain scripts #}
+                <h5 class="card-title">{{ product.name | safe }}</h5>
+                <p class="card-text flex-grow-1">${{ "%.2f"|format(product.price) }}</p>
+                <div class="mt-auto">
+                    <a href="{{ url_for("shop.view_product", product_id=product.id) }}" class="btn btn-sm btn-outline-primary">View Details</a>
+                    {# CSRF Vulnerability: Add to cart form without token #}
+                    <form action="{{ url_for("shop.add_to_cart", product_id=product.id) }}" method="POST" class="d-inline">
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="btn btn-sm btn-primary">Add to Cart</button> {# Use primary for red #}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-warning" role="alert">
+    No products found matching your search query: "{{ query | safe }}".
+</div>
+{% endif %}
+
+{% endblock %}
+
