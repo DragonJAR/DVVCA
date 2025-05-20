@@ -7,7 +7,7 @@
     <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold">Welcome to DVVCA</h1>
         <p class="col-md-8 fs-4">The Damn Vulnerable Vibe Code App online store. Explore our products (and our vulnerabilities).</p>
-        {# Corrected button link #}
+        
         <a href="{{ url_for("shop.view_all_products") }}" class="btn btn-primary btn-lg">View All Products</a>
     </div>
 </div>
@@ -17,7 +17,7 @@
         <h2>Categories</h2>
         {% if categories %}
         <div class="list-group mb-4">
-            {# Display categories with correct links #}
+            
             {% for category in categories %}
             <a href="{{ url_for("shop.view_category", category_id=category.id) }}" class="list-group-item list-group-item-action">{{ category.name | safe }}</a>
             {% endfor %}
@@ -30,15 +30,15 @@
         <h2>Featured Products</h2>
         {% if products %}
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            {# Display featured products #}
+            
             {% for product in products %}
             <div class="col">
                 <div class="card h-100">
                     {% if product.image_url %}
-                    {# Use serve_product_image endpoint #}
+                    
                     <img src="{{ url_for("serve_product_image", filename=product.image_url) }}" class="card-img-top" alt="{{ product.name | safe }}" style="height: 200px; object-fit: contain; padding: 10px;">
                     {% else %}
-                    {# Placeholder image or style #}
+                    
                     <div class="card-img-top d-flex align-items-center justify-content-center" style="height: 200px; background-color: #495057; color: #adb5bd;">No Image</div>
                     {% endif %}
                     <div class="card-body d-flex flex-column">

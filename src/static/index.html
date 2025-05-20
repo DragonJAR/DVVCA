@@ -17,14 +17,14 @@
 <body>
     <h1>User API Test</h1>
 
-    <!-- Get All Users -->
+    
     <div class="section">
         <h2>Get All Users (GET /users)</h2>
         <button onclick="getUsers()">Get Users</button>
         <pre id="get-users-result"></pre>
     </div>
 
-    <!-- Create User -->
+    
     <div class="section">
         <h2>Create User (POST /users)</h2>
         <label for="create-username">Username:</label>
@@ -35,7 +35,7 @@
         <pre id="create-user-result"></pre>
     </div>
 
-    <!-- Get Single User -->
+    
     <div class="section">
         <h2>Get Single User (GET /users/&lt;id&gt;)</h2>
         <label for="get-user-id">User ID:</label>
@@ -44,7 +44,7 @@
         <pre id="get-user-result"></pre>
     </div>
 
-    <!-- Update User -->
+    
     <div class="section">
         <h2>Update User (PUT /users/&lt;id&gt;)</h2>
         <label for="update-user-id">User ID:</label>
@@ -57,7 +57,7 @@
         <pre id="update-user-result"></pre>
     </div>
 
-    <!-- Delete User -->
+    
     <div class="section">
         <h2>Delete User (DELETE /users/&lt;id&gt;)</h2>
         <label for="delete-user-id">User ID:</label>
@@ -69,17 +69,17 @@
     <script>
         const API_BASE_URL = '/api/users';
 
-        // Helper function to display results
+
         function displayResult(elementId, data) {
             document.getElementById(elementId).textContent = JSON.stringify(data, null, 2);
         }
 
-        // Helper function to display errors
+
         function displayError(elementId, error) {
             document.getElementById(elementId).textContent = `Error: ${error.message || error}`;
         }
 
-        // GET /users
+
         async function getUsers() {
             const resultElementId = 'get-users-result';
             try {
@@ -92,7 +92,7 @@
             }
         }
 
-        // POST /users
+
         async function createUser() {
             const resultElementId = 'create-user-result';
             const username = document.getElementById('create-username').value;
@@ -110,7 +110,7 @@
                 const data = await response.json();
                 if (!response.ok) throw new Error(data.message || `HTTP error! status: ${response.status}`);
                 displayResult(resultElementId, data);
-                // 清空输入框
+
                 document.getElementById('create-username').value = '';
                 document.getElementById('create-email').value = '';
             } catch (error) {
@@ -118,7 +118,7 @@
             }
         }
 
-        // GET /users/<id>
+
         async function getUser() {
             const resultElementId = 'get-user-result';
             const userId = document.getElementById('get-user-id').value;
@@ -137,7 +137,7 @@
             }
         }
 
-        // PUT /users/<id>
+
         async function updateUser() {
             const resultElementId = 'update-user-result';
             const userId = document.getElementById('update-user-id').value;
@@ -165,7 +165,7 @@
                 const data = await response.json();
                  if (!response.ok) throw new Error(data.message || `HTTP error! status: ${response.status}`);
                 displayResult(resultElementId, data);
-                 // Clear input fields
+
                 document.getElementById('update-username').value = '';
                 document.getElementById('update-email').value = '';
             } catch (error) {
@@ -173,7 +173,7 @@
             }
         }
 
-        // DELETE /users/<id>
+
         async function deleteUser() {
             const resultElementId = 'delete-user-result';
             const userId = document.getElementById('delete-user-id').value;
@@ -186,16 +186,16 @@
                     method: 'DELETE'
                 });
                 if (response.status === 404) throw new Error('User not found');
-                if (!response.ok && response.status !== 204) throw new Error(`HTTP error! status: ${response.status}`); // Allow 204
-                // 204 No Content indicates success
+                if (!response.ok && response.status !== 204) throw new Error(`HTTP error! status: ${response.status}`);
+
                 if (response.status === 204) {
                      displayResult(resultElementId, { message: `User ID ${userId} has been successfully deleted` });
                 } else {
-                     // Try to read potential error message even on success-like status if not 204
+
                      const data = await response.text();
                      displayResult(resultElementId, data || { message: `Deletion successful, status code: ${response.status}` });
                 }
-                 // Clear input field
+
                 document.getElementById('delete-user-id').value = '';
             } catch (error) {
                 displayError(resultElementId, error);

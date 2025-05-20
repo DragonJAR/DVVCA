@@ -24,7 +24,7 @@
                     <a href="{{ url_for("shop.view_product", product_id=product.id) }}" class="btn btn-sm btn-outline-primary">View Details</a>
                     <form action="{{ url_for("shop.add_to_cart", product_id=product.id) }}" method="POST" class="d-inline">
                         <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-sm btn-primary">Add to Cart</button> {# Changed from btn-success #}
+                        <button type="submit" class="btn btn-sm btn-primary">Add to Cart</button> 
                     </form>
                 </div>
             </div>

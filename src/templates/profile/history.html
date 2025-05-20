@@ -8,8 +8,8 @@
     <hr>
     {% if history %}
         <ul class="list-group">
-            {# Vulnerability Note: Potential performance issue rendering a very long list. #}
-            {# Vulnerability Note: Potential Stored XSS if product names contain malicious script and are rendered without proper escaping (though Jinja2 autoescapes by default). #}
+            
+            
             {% for item in history %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <div>

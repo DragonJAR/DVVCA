@@ -11,11 +11,11 @@ from src.models.category import Category
 from src.models.product import Product
 from src.models.user import User
 
-# Path to the JSON file with product data
+                                         
 PRODUCTS_JSON_PATH = "../parsed_products.json"
 STATIC_IMAGES_PATH = "./static/product_images"
 
-# Sample user data
+                  
 sample_users = [
     {"username": "admin", "email": "admin@dvvca.test", "password": "password", "role": "admin"},
     {"username": "admin2", "email": "admin2@dvvca.test", "password": "admin123", "role": "admin"},
@@ -49,7 +49,7 @@ def populate():
         db.create_all()
         print("Populating database...")
         
-        # Populate Categories and Products
+                                          
         for data in products_data:
             category_name = data.get("category_name", "Uncategorized")
             category = Category.query.filter_by(name=category_name).first()
@@ -57,24 +57,24 @@ def populate():
                 print(f'Creating category: {category_name}') 
                 category = Category(name=category_name)
                 db.session.add(category)
-                db.session.flush() # Flush to get category.id
+                db.session.flush()                           
             
             existing_product = Product.query.filter_by(name=data["name"]).first()
             if not existing_product:
                 image_path_from_json = data.get("image_url", "product_images/default.png")
                 image_filename_base = os.path.splitext(os.path.basename(image_path_from_json))[0]
                 
-                image_filename_to_save = "default.png" # Default value
+                image_filename_to_save = "default.png"                
 
                 if image_filename_base == "default":
                     image_filename_to_save = "default.png"
                 else:
-                    # Attempt to use .jpeg first as downloaded images are mostly .jpeg
+                                                                                      
                     potential_image_name_jpeg = image_filename_base + ".jpeg"
                     if os.path.exists(os.path.join(STATIC_IMAGES_PATH, potential_image_name_jpeg)):
                         image_filename_to_save = potential_image_name_jpeg
                     else:
-                        # If .jpeg not found, try .png (original from JSON)
+                                                                           
                         potential_image_name_png = image_filename_base + ".png"
                         if os.path.exists(os.path.join(STATIC_IMAGES_PATH, potential_image_name_png)):
                             image_filename_to_save = potential_image_name_png
@@ -95,7 +95,7 @@ def populate():
             else:
                 print(f'Product already exists: {data["name"]}')
 
-        # Populate Sample Users
+                               
         print("Adding sample users...")
         for user_data in sample_users:
             existing_user = User.query.filter_by(username=user_data["username"]).first()

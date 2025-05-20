@@ -5,15 +5,15 @@ from src.models import db
 from src.models.user import User
 from src.models.category import Category
 from src.models.product import Product
-import requests # For SSRF
-import pickle # For Insecure Deserialization
-import base64 # To handle pickled data transfer
+import requests           
+import pickle                               
+import base64                                  
 from werkzeug.utils import secure_filename
 import os
 
 admin_bp = Blueprint("admin", __name__, template_folder="../templates/admin", url_prefix="/admin")
 
-# Decorator to check if user is admin
+                                     
 def admin_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -31,7 +31,7 @@ def dashboard():
     category_count = Category.query.count()
     return render_template("dashboard.html", user_count=user_count, product_count=product_count, category_count=category_count)
 
-# --- Product Management ---
+                            
 @admin_bp.route("/products")
 @admin_required
 def manage_products():
@@ -139,7 +139,7 @@ def delete_product(product_id):
         flash(f"Error deleting product: {str(e)}. Ensure it's not in any orders or carts.", "danger")
     return redirect(url_for("admin.manage_products"))
 
-# --- Category Management ---
+                             
 @admin_bp.route("/categories", methods=["GET", "POST"])
 @admin_required
 def manage_categories():
@@ -181,7 +181,7 @@ def delete_category(category_id):
             flash(f"Error deleting category: {str(e)}", "danger")
     return redirect(url_for("admin.manage_categories"))
 
-# --- User Management ---
+                         
 @admin_bp.route("/users")
 @admin_required
 def manage_users():
@@ -203,7 +203,7 @@ def change_user_role(user_id):
         user.role = "admin"
         action_taken = "promoted to Admin"
     else:
-        # Should not happen with current roles, but good for robustness
+                                                                       
         flash(f"User {user.username} has an unrecognized role: {user.role}", "danger")
         return redirect(url_for("admin.manage_users"))
 
@@ -232,7 +232,7 @@ def delete_user(user_id):
         flash(f"Error deleting user: {str(e)}. Ensure they have no orders, etc.", "danger")
     return redirect(url_for("admin.manage_users"))
 
-# --- Vulnerability: SSRF --- 
+                              
 @admin_bp.route("/fetch_url", methods=["GET", "POST"])
 @admin_required
 def fetch_url_data():
@@ -252,9 +252,9 @@ def fetch_url_data():
         else:
             flash("Please enter a URL.", "warning")
     return render_template("fetch_url.html", fetched_content=content, requested_url=url)
-# --- End SSRF --- 
+                   
 
-# --- Vulnerability: Insecure Deserialization --- 
+                                                  
 @admin_bp.route("/import_data", methods=["GET", "POST"])
 @admin_required
 def import_data():
@@ -276,12 +276,12 @@ def import_data():
         else:
             flash("Please provide Base64 encoded serialized data.", "warning")
     return render_template("import_data.html", result=result)
-# --- End Insecure Deserialization --- 
+                                       
 
-# --- Vulnerability: Broken Access Control --- 
+                                               
 @admin_bp.route("/system_info")
-# INTENTIONALLY MISSING: @admin_required or @login_required
+                                                           
 def system_info():
     return render_template("admin/system_info.html")
-# --- End Broken Access Control --- 
+                                    
 

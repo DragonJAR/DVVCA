@@ -13,7 +13,7 @@ profile_bp = Blueprint("profile", __name__, url_prefix="/profile")
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
 
 def allowed_file(filename):
-    return "." in filename and \
+    return "." in filename and\
            filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @profile_bp.route("/")
@@ -46,18 +46,18 @@ def edit_profile():
     user = User.query.get_or_404(current_user.id)
 
     if request.method == "POST":
-        # --- Mass Assignment Protection: only update allowed fields ---
+                                                                        
         allowed_fields = {"full_name", "bio"}
         for key, value in request.form.items():
             if key in allowed_fields:
                 setattr(user, key, value)
 
-        # --- Handle profile picture upload ---
+                                               
         profile_pic = request.files.get("profile_pic")
         if profile_pic and profile_pic.filename:
             filename = secure_filename(profile_pic.filename)
             if allowed_file(filename):
-                # Use the same upload folder configured in app.py
+                                                                 
                 upload_folder = current_app.config["PROFILE_PICS_UPLOAD_FOLDER"]
                 os.makedirs(upload_folder, exist_ok=True)
 
@@ -67,7 +67,7 @@ def edit_profile():
 
                 try:
                     profile_pic.save(save_path)
-                    # Save the filename in the model, not the URL
+                                                                 
                     user.profile_picture = new_filename
                     flash("Profile picture uploaded successfully!", "success")
                 except Exception as e:
