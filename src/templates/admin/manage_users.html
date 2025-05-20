@@ -31,13 +31,13 @@
                 </td>
                 <td>{{ user.created_at.strftime("%Y-%m-%d") }}</td>
                 <td>
-                    {# CSRF Vulnerability: Role change form without token #}
+                    
                     <form action="{{ url_for("admin.change_user_role", user_id=user.id) }}" method="POST" class="d-inline">
                         <button type="submit" class="btn btn-sm {{ 'btn-warning' if user.is_admin else 'btn-success' }}">
                             {{ 'Demote to User' if user.is_admin else 'Promote to Admin' }}
                         </button>
                     </form>
-                    {# CSRF Vulnerability: Delete form without token #}
+                    
                     <form action="{{ url_for("admin.delete_user", user_id=user.id) }}" method="POST" class="d-inline" onsubmit="return confirm("Are you sure you want to delete this user?");">
                         <button type="submit" class="btn btn-sm btn-danger" {{ 'disabled' if user.id == current_user.id }}>Delete</button>
                     </form>

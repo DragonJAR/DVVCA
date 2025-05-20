@@ -6,7 +6,7 @@ class Review(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     product_id = db.Column(db.Integer, db.ForeignKey("product.id"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
-    rating = db.Column(db.Integer, nullable=False) # e.g., 1 to 5 stars
+    rating = db.Column(db.Integer, nullable=False)                     
     comment = db.Column(db.Text, nullable=True)
     review_date = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
 
@@ -25,7 +25,7 @@ class Review(db.Model):
 
 
 
-    # Relationships
+                   
     user = relationship("User", back_populates="reviews")
     product = relationship("Product", back_populates="reviews")
 

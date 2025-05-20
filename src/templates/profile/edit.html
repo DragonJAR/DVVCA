@@ -23,14 +23,14 @@
         </div>
         <div class="mb-3">
             <label for="bio" class="form-label">Bio</label>
-            {# Vulnerability Note: Textarea allows multi-line input. If backend doesn't sanitize, stored XSS is possible. #}
+            
             <textarea class="form-control" id="bio" name="bio" rows="3">{{ user.bio or '' }}</textarea>
         </div>
         <div class="mb-3">
             <label for="profile_pic" class="form-label">Profile Picture</label>
             <input class="form-control" type="file" id="profile_pic" name="profile_pic" accept="image/*">
-            {# Vulnerability Note: `accept="image/*"` is client-side only and easily bypassed. #}
-            {# The real vulnerability lies in the backend handling (Unrestricted File Upload). #}
+            
+            
             {% if user.profile_pic_url %}
                 <div class="mt-2">Current Picture: <img src="{{ user.profile_pic_url }}" alt="Current Profile Picture" style="max-height: 50px;" class="rounded"></div>
             {% endif %}

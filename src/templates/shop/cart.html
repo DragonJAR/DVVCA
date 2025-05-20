@@ -23,17 +23,17 @@
                 <td>{{ item.product.name | safe }}</td>
                 <td>${{ "%.2f"|format(item.product.price) }}</td>
                 <td>
-                    {# CSRF Vulnerability: Update cart form without token #}
+                    
                     <form action="{{ url_for("shop.update_cart_item", item_id=item.id) }}" method="POST" class="d-inline-flex align-items-center">
                         <input type="number" class="form-control form-control-sm me-2" value="{{ item.quantity }}" min="1" name="quantity" style="width: 70px;" aria-label="Quantity">
-                        <button type="submit" class="btn btn-sm btn-secondary">Update</button> {# Use secondary for update #}
+                        <button type="submit" class="btn btn-sm btn-secondary">Update</button> 
                     </form>
                 </td>
                 <td>${{ "%.2f"|format(item.quantity * item.product.price) }}</td>
                 <td>
-                    {# CSRF Vulnerability: Remove from cart form without token #}
+                    
                     <form action="{{ url_for("shop.remove_cart_item", item_id=item.id) }}" method="POST" class="d-inline">
-                        <button type="submit" class="btn btn-sm btn-danger">Remove</button> {# Use danger for remove #}
+                        <button type="submit" class="btn btn-sm btn-danger">Remove</button> 
                     </form>
                 </td>
             </tr>
@@ -50,14 +50,14 @@
 </div>
 
 <div class="text-end mt-3">
-    <a href="{{ url_for("shop.checkout") }}" class="btn btn-primary btn-lg">Proceed to Checkout</a> {# Use primary for checkout #}
+    <a href="{{ url_for("shop.checkout") }}" class="btn btn-primary btn-lg">Proceed to Checkout</a> 
 </div>
 
 {% else %}
 <div class="alert alert-info" role="alert">
     Your cart is empty.
 </div>
-<a href="{{ url_for("shop.index") }}" class="btn btn-outline-primary">Continue Shopping</a> {# Use outline-primary #}
+<a href="{{ url_for("shop.index") }}" class="btn btn-outline-primary">Continue Shopping</a> 
 {% endif %}
 
 {% endblock %}

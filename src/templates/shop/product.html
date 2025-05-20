@@ -3,13 +3,13 @@
 {% block title %}{{ product.name | safe }} - DVVCA{% endblock %}
 
 {% block content %}
-{# Intentionally vulnerable: Stored XSS - Displaying product name unsafely #}
+
 <h2>{{ product.name | safe }}</h2>
-{# <p>Showing details for product ID: {{ product.id }}</p> #}
+
 
 <div class="row mb-4">
     <div class="col-md-6 mb-3 mb-md-0">
-        {# Vulnerability: Path Traversal - Image URL might point to the vulnerable endpoint #}
+        
         {% if product.image_url %}
         <img src="{{ url_for("serve_product_image", filename=product.image_url) }}" class="img-fluid rounded border border-secondary" alt="{{ product.name | safe }}">
         {% else %}
@@ -18,29 +18,29 @@
     </div>
     <div class="col-md-6">
         <h3>{{ product.name | safe }}</h3>
-        {# Intentionally vulnerable: Stored XSS - Displaying product description unsafely #}
+        
         <p>{{ product.description | safe }}</p>
         <p class="fs-4"><strong>Price: ${{ "%.2f"|format(product.price) }}</strong></p>
 
-        {# Add to Cart Form #}
-        {# CSRF Vulnerability: Add to cart form without token #}
+        
+        
         <form action="{{ url_for("shop.add_to_cart", product_id=product.id) }}" method="POST" class="d-inline-block me-2 mb-2">
             <div class="input-group" style="max-width: 150px;">
                 <input type="number" class="form-control" value="1" min="1" name="quantity" aria-label="Quantity">
-                <button class="btn btn-primary" type="submit">Add to Cart</button> {# Use btn-primary for red #}
+                <button class="btn btn-primary" type="submit">Add to Cart</button> 
             </div>
         </form>
 
-        {# Add to Favorites Button/Form (Only if logged in) #}
+        
         {% if current_user.is_authenticated %}
-            {# CSRF Vulnerability: Add to favorites form without token #}
+            
             <form action="{{ url_for("shop.add_favorite", product_id=product.id) }}" method="POST" class="d-inline-block mb-2">
-                {# Check if already favorited - logic needs to be passed from route #}
-                {# {% if is_favorited %} #}
-                {# <button class="btn btn-danger" type="submit" name="action" value="remove">Remove Favorite</button> #}
-                {# {% else %} #}
-                <button class="btn btn-outline-primary" type="submit" name="action" value="add">Add to Favorites</button> {# Use btn-outline-primary #}
-                {# {% endif %} #}
+                
+                
+                
+                
+                <button class="btn btn-outline-primary" type="submit" name="action" value="add">Add to Favorites</button> 
+                
             </form>
         {% endif %}
     </div>
@@ -58,7 +58,7 @@
             <small class="text-muted">{{ review.review_date.strftime("%Y-%m-%d") }}</small>
         </div>
         <p class="mb-1"><strong>Rating:</strong> {{ review.rating }} stars</p>
-        {# Intentionally vulnerable: Stored XSS - Displaying comment unsafely #}
+        
         <p class="mb-1">{{ review.comment | safe }}</p>
     </div>
     {% endfor %}
@@ -67,10 +67,10 @@
 <p>No reviews for this product yet.</p>
 {% endif %}
 
-{# Use current_user.is_authenticated for Flask-Login #}
+
 {% if current_user.is_authenticated %}
 <h4 class="mt-4">Leave your review</h4>
-{# CSRF Vulnerability: Add review form without token #}
+
 <form action="{{ url_for("shop.add_review", product_id=product.id) }}" method="POST">
     <div class="mb-3">
         <label for="rating" class="form-label">Rating (1-5)</label>

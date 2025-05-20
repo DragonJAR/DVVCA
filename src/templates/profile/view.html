@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-4 text-center">
             {% if user.profile_pic_url %}
-                {# Vulnerability Note: Displaying user-provided URL directly. #}
+                
                 <img src="{{ user.profile_pic_url }}" alt="Profile Picture" class="img-fluid rounded-circle mb-3" style="max-width: 200px; max-height: 200px; object-fit: cover;">
             {% else %}
                 <img src="{{ url_for("serve_static_files", path="default_profile.png") }}" alt="Default Profile Picture" class="img-fluid rounded-circle mb-3" style="max-width: 200px;">
@@ -24,24 +24,24 @@
             <p><strong>Email:</strong> {{ user.email }}</p>
             <p><strong>Joined:</strong> {{ user.created_at.strftime("%Y-%m-%d") }}</p>
             <h5>Bio:</h5>
-            {# Vulnerability Note: Jinja2 autoescapes by default, mitigating direct HTML injection here. #}
+            
             <p>{{ user.bio or "No bio provided." }}</p>
             <a href="{{ url_for("profile.edit_profile") }}" class="btn btn-secondary">Edit Profile</a>
         </div>
     </div>
 
-    {# Sections for Browsing History, Favorites, Reviews #}
+    
     <div class="mt-5">
         <h4>My Activity</h4>
         <div class="list-group">
             <a href="{{ url_for("profile.view_history") }}" class="list-group-item list-group-item-action">View Browsing History</a>
             <a href="{{ url_for("profile.view_favorites") }}" class="list-group-item list-group-item-action">View Favorites</a>
-            {# Link to reviews will be added once implemented #}
-            {# <a href="{{ url_for("profile.view_reviews") }}" class="list-group-item list-group-item-action">View My Reviews</a> #}
+            
+            
         </div>
     </div>
 
-    {# Optional: Preview of recent activity #}
+    
     <div class="mt-4">
         <h5>Recent History (Last 5)</h5>
         {% if recent_history %}

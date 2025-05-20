@@ -13,10 +13,10 @@ class User(db.Model, UserMixin):
     role = db.Column(db.String(10), nullable=False, default="user")
     full_name = db.Column(db.String(100), nullable=True)
     bio = db.Column(db.Text, nullable=True)
-    profile_picture = db.Column(db.String(255), nullable=True)  # Stores filename of the uploaded picture
+    profile_picture = db.Column(db.String(255), nullable=True)                                           
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
-    # Relationships
+                   
     reviews = relationship("Review", back_populates="user", cascade="all, delete-orphan")
     cart_items = relationship("CartItem", back_populates="user", cascade="all, delete-orphan")
     orders = relationship("Order", back_populates="user", cascade="all, delete-orphan")

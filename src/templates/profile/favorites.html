@@ -8,13 +8,13 @@
     <hr>
     {% if favorites %}
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            {# Vulnerability Note: Potential performance issue rendering a very long list. #}
-            {# Vulnerability Note: Potential Stored XSS if product names contain malicious script. #}
+            
+            
             {% for item in favorites %}
                 <div class="col">
                     <div class="card h-100">
                         {% if item.image %}
-                            {# Assuming product images are served via /product_images/<filename> route #}
+                            
                             <img src="{{ url_for("serve_product_image", filename=item.image) }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: contain; padding: 10px;">
                         {% else %}
                             <img src="/static/placeholder.png" class="card-img-top" alt="Placeholder" style="height: 200px; object-fit: contain; padding: 10px;">
@@ -24,9 +24,9 @@
                             <p class="card-text">${{ "%.2f"|format(item.price) }}</p>
                         </div>
                         <div class="card-footer">
-                            {# Form to remove from favorites #}
+                            
                             <form action="{{ url_for("shop.remove_favorite", product_id=item.product_id) }}" method="POST" style="display: inline;">
-                                {# Vulnerability Note: CSRF - No token #}
+                                
                                 <button type="submit" class="btn btn-sm btn-danger">Remove Favorite</button>
                             </form>
                         </div>

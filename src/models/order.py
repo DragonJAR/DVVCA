@@ -8,12 +8,12 @@ class Order(db.Model):
     order_date = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
     total_amount = db.Column(db.Float, nullable=False)
     shipping_address = db.Column(db.Text, nullable=False)
-    # Simulate payment info - DO NOT store real card details securely in a real app!
-    # These fields are intentionally insecure for DVVCA
-    card_number_last4 = db.Column(db.String(4), nullable=True)  # Store only last 4 digits
+                                                                                    
+                                                       
+    card_number_last4 = db.Column(db.String(4), nullable=True)                            
     order_items = db.relationship("OrderItem", back_populates="order", lazy=True)
 
-    # Relationships
+                   
     user = relationship("User", back_populates="orders")
 
     def __repr__(self):

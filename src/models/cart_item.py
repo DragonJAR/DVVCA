@@ -18,7 +18,7 @@ class CartItem(db.Model):
             'quantity': self.quantity
         }
 
-    # Relationships
+                   
     user = relationship("User", back_populates="cart_items")
     product = relationship("Product", back_populates="cart_items")
 
@@ -27,5 +27,5 @@ class CartItem(db.Model):
         """
         Returns the subtotal for this cart item (quantity * unit price).
         """
-        # Ensure product.price is numeric
+                                         
         return self.quantity * self.product.price
