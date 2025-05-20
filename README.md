@@ -93,3 +93,27 @@ Follow these steps to launch DVVCA on your local machine (Windows, macOS, or Lin
   * `user1` / `password123`
   * `user2` / `123456`
   * `testuser` / `password123`
+
+## Project Structure
+
+The repository is organized as follows:
+
+- `src/main.py` - application entry point that initializes the Flask app.
+- `src/models/` - SQLAlchemy models representing users, products, orders and other objects.
+- `src/routes/` - Flask blueprints for authentication, shopping, profiles and the admin panel.
+- `src/templates/` - Jinja2 templates used to render HTML pages.
+- `src/static/` - static assets and uploaded images.
+- `parsed_products.json` - product data consumed by `src/populate_db.py`.
+- `dvvca.db` - SQLite database bundled with sample data.
+
+## Resetting the Sample Database
+
+If you want to recreate `dvvca.db` or load the sample products again, run the population script inside your virtual environment:
+
+```bash
+python src/populate_db.py
+```
+
+The script drops existing tables, creates them again and imports data from `parsed_products.json` together with the sample user accounts listed above.
+
+
